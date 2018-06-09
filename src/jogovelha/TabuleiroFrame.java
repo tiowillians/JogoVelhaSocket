@@ -1036,7 +1036,7 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         enviarMensagemUDP(j.getAddress(), 4, apelidoLocal);
         esperandoRespostaConvite = true;
         statusJLabel.setText("AGUARDANDO RESPOSTA");
-        // DEBUG: timeoutAguardandoJogadorRemoto.start();
+        timeoutAguardandoJogadorRemoto.start();
     }//GEN-LAST:event_convidarJButtonActionPerformed
 
     private void conectarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarJButtonActionPerformed
@@ -1733,7 +1733,7 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         esperandoConfirmacao = true;
         esperandoInicioJogo = true;
         statusJLabel.setText("AGUARDANDO CONEXÃO");
-        // DEBUG: timeoutAguardandoJogadorRemoto.start();
+        timeoutAguardandoJogadorRemoto.start();
     }
     
     public void jogadorRemotoConectou(ConexaoTCP conexao)
