@@ -127,7 +127,7 @@ Uma vez recebido essa mensagem, o jogo se inicia.</dd>
 <dt><h4>Mensagem “10” (MSG10): desistência de continuar jogando.</h4></dt>
 <dd><b>Formato da Mensagem: <u>10005</u></b>
   <nl>
-    <li><b>10: identificação da mensagem</li>
+    <li><b>10</b>: identificação da mensagem</li>
     <li><b>005</b>: tamanho total da mensagem (tamanho fixo)</li>
   </nl>
 </dd>
