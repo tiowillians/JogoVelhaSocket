@@ -106,11 +106,12 @@ Uma vez recebido essa mensagem, o jogo se inicia.</dd>
     <li><b>N</b>: indica a posição que o jogador escolheu no tabuleiro</li>
   </nl>
 </dd>
-<dd>Essa mensagem é enviada pelo jogador que possui a vez, imediatamente após ele escolher uma posição no tabuleiro. No tabuleiro, cada posição é numerada de 1 a 9, conforme mostrado na figura abaixo. Ao receber a mensagem, o programa deverá atualizar o tabuleiro e a vez passa ao jogador que recebeu a mensagem.
+<dd>Essa mensagem é enviada pelo jogador que possui a vez, imediatamente após ele escolher uma posição no tabuleiro. No tabuleiro, cada posição é numerada de 1 a 9, conforme mostrado abaixo. Ao receber a mensagem, o programa deverá atualizar o tabuleiro e a vez passa ao jogador que recebeu a mensagem.
 <b>
-  <br>1&emsp;2&emsp;3
-  <br>4&emsp;5&emsp;6
-  <br>7&emsp;8&emsp;9
+  <br>Tabuleiro:
+  <br>&emsp;1&emsp;2&emsp;3
+  <br>&emsp;4&emsp;5&emsp;6
+  <br>&emsp;7&emsp;8&emsp;9
 </b>
 </dd>
 <br>
