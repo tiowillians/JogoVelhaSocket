@@ -7,7 +7,7 @@ As mensagens trocadas entre os programas serão sempre no formato texto (ASCII),
 <li><b>ID</b>: 2 dígitos que identifica o tipo da mensagem</li>
 <li><b>Tamanho</b>: 3 dígitos que indica o número de caracteres (tamanho) total da mensagem, incluindo os 5 dígitos do cabeçalho.</li>
 </ul>
-<br>
+<br><br>
 <h3>Mensagens trocadas antes do Jogo</h3>
 Mensagens UDP (datagramas, sem conexão prévia entre os computadores) trocadas entre o programa e demais computadores com o objetivo de saber quem está online e fazer o convite para participar de um jogo. O programa irá utilizar a porta <b>20181</b> (uma referência para 2018/1 - primeiro semestre de 2018, quando esse projeto foi proposto) para escutar estas mensagens. Essa porta deverá ficar disponível para troca de mensagens, mesmo quando o jogador estiver participando de um jogo. O tipo e formato das mensagens estão descritos a seguir:
 <br>
@@ -79,7 +79,7 @@ Mensagens UDP (datagramas, sem conexão prévia entre os computadores) trocadas 
   </nl>
 </dd>
 <dd>Essa mensagem será enviada automaticamente pelo jogador que fez o convite para o jogo, informando ao jogador que foi convidado que ele recebeu a resposta do convite e, caso o convite tenha sido aceito, irá fazer a conexão TCP na porta indicada para iniciar o jogo. Como a resposta ao convite foi feita usando mensagens UDP, essa resposta pode não ser lida pelo jogador que fez o convite. Dessa forma, o jogador que recebeu o convite terá certeza que a conexão TCP será feita. Caso a MSG06 não chegue dentro de um certo intervalo de tempo (timeout), o jogador que recebeu o convite poderá, ou enviar uma nova resposta, ou não se preparar para iniciar o jogo (não abrir uma porta para conexão TCP).</dd>
-
+<br><br>
 <h3>Mensagens trocadas durante o Jogo</h3>
 Mensagens TCP (com conexão prévia entre os computadores) trocadas entre os dois jogadores participantes do jogo. Essa conexão deverá ser feita pelo jogador que fez o convite, logo após o envio da mensagem MSG06.
 <br>
@@ -108,9 +108,9 @@ Uma vez recebido essa mensagem, o jogo se inicia.</dd>
 </dd>
 <dd>Essa mensagem é enviada pelo jogador que possui a vez, imediatamente após ele escolher uma posição no tabuleiro. No tabuleiro, cada posição é numerada de 1 a 9, conforme mostrado na figura abaixo. Ao receber a mensagem, o programa deverá atualizar o tabuleiro e a vez passa ao jogador que recebeu a mensagem.
 <b>
-  <br>1"&emsp;"2"&emsp;"3
-  <br>4"&emsp;"5"&emsp;"6
-  <br>7"&emsp;"8"&emsp;"9
+  <br>1&emsp;2&emsp;3
+  <br>4&emsp;5&emsp;6
+  <br>7&emsp;8&emsp;9
 </b>
 </dd>
 <br>
