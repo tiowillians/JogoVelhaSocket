@@ -13,22 +13,23 @@ Mensagens UDP (datagramas, sem conexão prévia entre os computadores) trocadas 
 <br>
 <dl>
 <dt><h4>Mensagem “01” (MSG01): saber quem está online.</h4></dt>
-<dd><b>Formato da Mensagem: 01999Apelido</b>
-<nl>
-<li><b>01</b>: identificação da mensagem</li>
-<li><b>999</b>: tamanho total da mensagem, incluindo o cabeçalho</li>
-<li><b>Apelido</b>: nome no qual você deseja ser identificado. É o nome do jogador que está enviando a mensagem.</li>
-</nl></dd>
+  <dd><b>Formato da Mensagem: <u>01999Apelido</u></b>
+  <nl>
+    <li><b>01</b>: identificação da mensagem</li>
+    <li><b>999</b>: tamanho total da mensagem, incluindo o cabeçalho</li>
+    <li><b>Apelido</b>: nome no qual você deseja ser identificado. É o nome do jogador que está enviando a mensagem.</li>
+  </nl>
+</dd>
 <dd>Essa mensagem será enviada via broadcast para a porta 20181 em duas situações:
-<ol>
-<li>quando você iniciar o programa, indicando que você fez o login;</li>
-<li>sempre que desejar saber quais são os jogadores que estão online no momento.</li>
-</ol>
+  <ol>
+    <li>quando você iniciar o programa, indicando que você fez o login;</li>
+    <li>sempre que desejar saber quais são os jogadores que estão online no momento.</li>
+  </ol>
 É aconselhável que essa mensagem seja enviada periodicamente (em intervalos nunca inferiores a 3 minutos) para atualizar a lista de jogadores que estão online, pois pode ocorrer algum problema no computador de algum jogador e ele ficar off-line sem avisar aos demais jogadores. Ao receber essa mensagem, o programa deverá guardar o apelido e IP do jogador (conforme explicado na <b>MSG02</b>), e responderá com uma <b>MSG02</b> se identificando, permitindo que seja montada uma lista de jogadores que estão online. Essa lista deverá ser usada para convidar jogadores para a disputa de um jogo.
 </dd>
 
 <dt><h4>Mensagem “02” (MSG02): resposta à MSG01 informando que você está online.</h4></dt>
-<dd><b>Formato da Mensagem: 02999Apelido</b>
+<dd><b>Formato da Mensagem: <u>02999Apelido</u></b>
 <nl>
   <li><b>02</b>: identificação da mensagem</li>
   <li><b>999</b>: tamanho total da mensagem, incluindo o cabeçalho</li>
@@ -37,69 +38,95 @@ Mensagens UDP (datagramas, sem conexão prévia entre os computadores) trocadas 
 <dd>Essa mensagem é uma resposta automática à mensagem MSG01. Essa mensagem deverá ser enviada somente para quem enviou a mensagem MSG01, onde o jogador corrente estará se identificando, mostrando que está online. Ao receber as mensagens MSG02 (bem como a MSG01) o programa deverá atualizar a lista de jogadores que estão online. Essa lista conterá o apelido e IP de cada jogador (o IP pode ser obtido através do campo RemoteAddress existente no socket que estiver escutando a porta 20181), para que o jogador corrente possa fazer um convite a algum desses jogadores para participar de um jogo. Jogadores que estiverem na lista e não responderem à sua mensagem MSG01 deverão ser retirados da lista.
 </dd>
 
-•	Mensagem “03” (MSG03): programa foi encerrado.
-Formato da Mensagem: 03999Apelido
-03: identificação da mensagem
-999: tamanho total da mensagem, incluindo o cabeçalho
-Apelido: identificação do jogador que está enviando a mensagem
-Essa mensagem será enviada via broadcasting indicando que você encerrou o programa e está off-line a partir desse instante. Ao receber as mensagens MSG03, o programa deverá atualizar a lista de jogadores que estão online.
+<dt><h4>Mensagem “03” (MSG03): programa foi encerrado.</h4></dt>
+<dd><b>Formato da Mensagem: <u>03999Apelido</u></b>
+  <nl>
+    <li><b>03</b>: identificação da mensagem</li>
+    <li><b>999</b>: tamanho total da mensagem, incluindo o cabeçalho</li>
+    <li><b>Apelido</b>: identificação do jogador que está enviando a mensagem</li>
+  </nl>
+</dd>
+<dd>Essa mensagem será enviada via broadcasting indicando que você encerrou o programa e está off-line a partir desse instante. Ao receber as mensagens MSG03, o programa deverá atualizar a lista de jogadores que estão online.</dd>
 
-•	Mensagem “04” (MSG04): convite para participar de um jogo.
-Formato da Mensagem: 04999Apelido
-04: identificação da mensagem
-999: tamanho total da mensagem
-Apelido: identificação do jogador que está enviando a mensagem
-Essa mensagem será enviada para um jogador específico que estiver na sua lista de jogadores online. O recebimento dessa mensagem indica que o jogador (Apelido) está te convidando para um jogo. Lembrando que o jogo será uma melhor de 5 partidas.
+<dt><h4>Mensagem “04” (MSG04): convite para participar de um jogo.</h4></dt>
+<dd><b>Formato da Mensagem: <u>04999Apelido</u></b>
+  <nl>
+    <li><b>04</b>: identificação da mensagem</li>
+    <li><b>999</b>: tamanho total da mensagem</li>
+    <li><b>Apelido</b>: identificação do jogador que está enviando a mensagem</li>
+  </nl>
+</dd>
+<dd>Essa mensagem será enviada para um jogador específico que estiver na sua lista de jogadores online. O recebimento dessa mensagem indica que o jogador (Apelido) está te convidando para um jogo. Lembrando que o jogo será uma melhor de 5 partidas.</dd>
 
-•	Mensagem “05” (MSG05): resposta à MSG04 indicando se convite foi aceito ou não.
-Formato da Mensagem: 05999Apelido|Porta
-05: identificação da mensagem
-999: tamanho total da mensagem
-Apelido: identificação do jogador que está enviando a mensagem
-|: separador de campo
-Porta: caso o convite tenha sido aceito, número da porta TCP que será utilizada para fazer a conexão ponto-a-ponto (peer-to-peer). Caso não queira (ou não possa) aceitar o convite, o número da porta deverá ser 0 (zero) indicando que o você não quer jogar ou que já está jogando com outro jogador (nesse caso, a resposta deverá ser automática).
-Essa mensagem será enviada somente para quem te enviou a MSG04. Ao aceitar um convite, o programa deverá abrir um socket TCP que ficará escutando a porta informada na mensagem, esperando que o jogador que fez o convite conecte com você para iniciar o jogo.
+<dt><h4>Mensagem “05” (MSG05): resposta à MSG04 indicando se convite foi aceito ou não.</h4></dt>
+<dd><b>Formato da Mensagem: <u>05999Apelido|Porta</u></b>
+  <nl>
+    <li><b>05</b>: identificação da mensagem</li>
+    <li><b>999</b>: tamanho total da mensagem</li>
+    <li><b>Apelido</b>: identificação do jogador que está enviando a mensagem</li>
+    <li><b>|</b>: separador de campo</li>
+    <li><b>Porta</b>: caso o convite tenha sido aceito, número da porta TCP que será utilizada para fazer a conexão ponto-a-ponto (peer-to-peer). Caso não queira (ou não possa) aceitar o convite, o número da porta deverá ser 0 (zero) indicando que o você não quer jogar ou que já está jogando com outro jogador (nesse caso, a resposta deverá ser automática).</li>
+  </nl>
+</dd>
+<dd>Essa mensagem será enviada somente para quem te enviou a MSG04. Ao aceitar um convite, o programa deverá abrir um socket TCP que ficará escutando a porta informada na mensagem, esperando que o jogador que fez o convite conecte com você para iniciar o jogo.</dd>
 
-•	Mensagem “06” (MSG06): resposta à MSG05 indicando que jogador recebeu a resposta ao convite.
-Formato da Mensagem: 06007Ok
-06: identificação da mensagem
-007: tamanho total da mensagem (tamanho fixo)
-Ok: resposta fixa
-Essa mensagem será enviada automaticamente pelo jogador que fez o convite para o jogo, informando ao jogador que foi convidado que ele recebeu a resposta do convite e, caso o convite tenha sido aceito, irá fazer a conexão TCP na porta indicada para iniciar o jogo. Como a resposta ao convite foi feita usando mensagens UDP, essa resposta pode não ser lida pelo jogador que fez o convite. Dessa forma, o jogador que recebeu o convite terá certeza que a conexão TCP será feita. Caso a MSG06 não chegue dentro de um certo intervalo de tempo (timeout), o jogador que recebeu o convite poderá, ou enviar uma nova resposta, ou não se preparar para iniciar o jogo (não abrir uma porta para conexão TCP).
+<dt><h4>Mensagem “06” (MSG06): resposta à MSG05 indicando que jogador recebeu a resposta ao convite.</h4></dt>
+<dd><b>Formato da Mensagem: <u>06007Ok</u></b>
+  <nl>
+    <li><b>06</b>: identificação da mensagem</li>
+    <li><b>007</b>: tamanho total da mensagem (tamanho fixo)</li>
+    <li><b>Ok</b>: resposta fixa</li>
+  </nl>
+</dd>
+<dd>Essa mensagem será enviada automaticamente pelo jogador que fez o convite para o jogo, informando ao jogador que foi convidado que ele recebeu a resposta do convite e, caso o convite tenha sido aceito, irá fazer a conexão TCP na porta indicada para iniciar o jogo. Como a resposta ao convite foi feita usando mensagens UDP, essa resposta pode não ser lida pelo jogador que fez o convite. Dessa forma, o jogador que recebeu o convite terá certeza que a conexão TCP será feita. Caso a MSG06 não chegue dentro de um certo intervalo de tempo (timeout), o jogador que recebeu o convite poderá, ou enviar uma nova resposta, ou não se preparar para iniciar o jogo (não abrir uma porta para conexão TCP).</dd>
 
-Mensagens trocadas durante o Jogo
+<h3>Mensagens trocadas durante o Jogo</h3>
 Mensagens TCP (com conexão prévia entre os computadores) trocadas entre os dois jogadores participantes do jogo. Essa conexão deverá ser feita pelo jogador que fez o convite, logo após o envio da mensagem MSG06.
+<br>
+<dt><h4>Mensagem “07” (MSG07): início do jogo.</h4></dt>
+<dd><b>Formato da Mensagem: <u>07006N</u></b>
+  <nl>
+    <li><b>07</b>: identificação da mensagem</li>
+    <li><b>006</b>: tamanho total da mensagem (tamanho fixo)</li>
+    <li><b>N</b>: indica quem vai iniciar o jogo</li>
+  </nl>
+</dd>
+<dd>Essa mensagem é enviada pelo jogador que recebeu o convite, logo após quem convidou fazer a conexão TCP. O campo N indica quem irá iniciar o jogo e pode ser os seguintes valores:
+  <ol>
+    <li>quem recebeu o convite irá iniciar o jogo (no caso, o jogador que enviou essa mensagem)</li>
+    <li>quem convidou irá iniciar o jogo (no caso, o jogador que recebeu essa mensagem)</li>
+  </ol>
+Uma vez recebido essa mensagem, o jogo se inicia.</dd>
 
-•	Mensagem “07” (MSG07): início do jogo.
-Formato da Mensagem: 07006N
-07: identificação da mensagem
-006: tamanho total da mensagem (tamanho fixo)
-N: indica quem vai iniciar o jogo
-Essa mensagem é enviada pelo jogador que recebeu o convite, logo após quem convidou fazer a conexão TCP. O campo N indica quem irá iniciar o jogo e pode ser os seguintes valores:
-o	1: quem recebeu o convite irá iniciar o jogo (no caso, o jogador que enviou essa mensagem)
-o	2: quem convidou irá iniciar o jogo (no caso, o jogador que recebeu essa mensagem)
-Uma vez recebido essa mensagem, o jogo se inicia.
+<dt><h4>Mensagem “08” (MSG08): jogador fez uma jogada, escolhendo uma posição no tabuleiro.</h4></dt>
+<dd><b>Formato da Mensagem: <u>08006N</u></b>
+  <nl>
+    <li><b>08: identificação da mensagem</li>
+    <li><b>006</b>: tamanho total da mensagem (tamanho fixo)</li>
+    <li><b>N</b>: indica a posição que o jogador escolheu no tabuleiro</li>
+  </nl>
+</dd>
+<dd>Essa mensagem é enviada pelo jogador que possui a vez, imediatamente após ele escolher uma posição no tabuleiro. No tabuleiro, cada posição é numerada de 1 a 9, conforme mostrado na figura abaixo. Ao receber a mensagem, o programa deverá atualizar o tabuleiro e a vez passa ao jogador que recebeu a mensagem.
+<br>1	2	3
+<br>4	5	6
+<br>7	8	9
+</dd>
 
-•	Mensagem “08” (MSG08): jogador fez uma jogada, escolhendo uma posição no tabuleiro.
-Formato da Mensagem: 08006N
-08: identificação da mensagem
-006: tamanho total da mensagem (tamanho fixo)
-N: indica a posição que o jogador escolheu no tabuleiro
-Essa mensagem é enviada pelo jogador que possui a vez, imediatamente após ele escolher uma posição no tabuleiro. No tabuleiro, cada posição é numerada de 1 a 9, conforme mostrado na figura abaixo. Ao receber a mensagem, o programa deverá atualizar o tabuleiro e a vez passa ao jogador que recebeu a mensagem.
-1	2	3
-4	5	6
-7	8	9
+<dt><h4>Mensagem “09” (MSG09): início de uma nova partida.</h4></dt>
+<dd><b>Formato da Mensagem: <u>09005</u></b>
+  <nl>
+    <li><b>09: identificação da mensagem</li>
+    <li><b>005</b>: tamanho total da mensagem (tamanho fixo)</li>
+  </nl>
+</dd>
+<dd>Como cada jogador sabe quando o jogo encerrou (com alguém vencendo ou, no caso de todas as posições do tabuleiro serem preenchidas, havendo empate), não é necessário indicar o fim do jogo. Entretanto, ao encerrar uma partida, uma nova partida deverá ser iniciada, caso ainda nenhum jogador tenha alcançado a vitória na melhor de 5. Essa mensagem deverá ser enviada por quem perdeu a última partida. Em caso de empate, mensagem deverá ser enviada por quem não começou a partida anterior (que acabou de ser encerrada). Quem envia essa mensagem irá começar a nova partida, podendo escolher uma posição para jogar, enviando, logo após, uma mensagem MSG08. Quando houver um ganhador definitivo na melhor de 5 partidas (3ª vitória de algum dos jogadores), ou então um empate entre os jogadores (encerrou-se a 5ª partida e nenhum jogador teve mais vitórias que o outro), a conexão será automaticamente encerrada e, para participar de um novo jogo, deverá ser feito um novo convite.</dd>
 
-
-•	Mensagem “09” (MSG09): início de uma nova partida.
-Formato da Mensagem: 09005
-09: identificação da mensagem
-005: tamanho total da mensagem (tamanho fixo)
-Como cada jogador sabe quando o jogo encerrou (com alguém vencendo ou, no caso de todas as posições do tabuleiro serem preenchidas, havendo empate), não é necessário indicar o fim do jogo. Entretanto, ao encerrar uma partida, uma nova partida deverá ser iniciada, caso ainda nenhum jogador tenha alcançado a vitória na melhor de 5. Essa mensagem deverá ser enviada por quem perdeu a última partida. Em caso de empate, mensagem deverá ser enviada por quem não começou a partida anterior (que acabou de ser encerrada). Quem envia essa mensagem irá começar a nova partida, podendo escolher uma posição para jogar, enviando, logo após, uma mensagem MSG08. Quando houver um ganhador definitivo na melhor de 5 partidas (3ª vitória de algum dos jogadores), ou então um empate entre os jogadores (encerrou-se a 5ª partida e nenhum jogador teve mais vitórias que o outro), a conexão será automaticamente encerrada e, para participar de um novo jogo, deverá ser feito um novo convite.
-
-•	Mensagem “10” (MSG10): desistência de continuar jogando.
-Formato da Mensagem: 10005
-10: identificação da mensagem
-005: tamanho total da mensagem (tamanho fixo)
-Essa mensagem deverá ser enviada pelo jogador que, por algum motivo, desistiu de continuar jogando. Nesse caso, logo após o envio da mensagem, o jogador deverá encerrar a conexão.
+<dt><h4>Mensagem “10” (MSG10): desistência de continuar jogando.</h4></dt>
+<dd><b>Formato da Mensagem: <u>10005</u></b>
+  <nl>
+    <li><b>10: identificação da mensagem</li>
+    <li><b>005</b>: tamanho total da mensagem (tamanho fixo)</li>
+  </nl>
+</dd>
+<dd>Essa mensagem deverá ser enviada pelo jogador que, por algum motivo, desistiu de continuar jogando. Nesse caso, logo após o envio da mensagem, o jogador deverá encerrar a conexão.</dd>
 </dl>
