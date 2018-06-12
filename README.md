@@ -18,7 +18,7 @@ Mensagens UDP (datagramas, sem conexão prévia entre os computadores) trocadas 
 <li><b>01</b>: identificação da mensagem</li>
 <li><b>999</b>: tamanho total da mensagem, incluindo o cabeçalho</li>
 <li><b>Apelido</b>: nome no qual você deseja ser identificado. É o nome do jogador que está enviando a mensagem.</li>
-</ul></dd>
+</nl></dd>
 <dd>Essa mensagem será enviada via broadcast para a porta 20181 em duas situações:
 <ol>
 <li>quando você iniciar o programa, indicando que você fez o login;</li>
@@ -27,12 +27,15 @@ Mensagens UDP (datagramas, sem conexão prévia entre os computadores) trocadas 
 É aconselhável que essa mensagem seja enviada periodicamente (em intervalos nunca inferiores a 3 minutos) para atualizar a lista de jogadores que estão online, pois pode ocorrer algum problema no computador de algum jogador e ele ficar off-line sem avisar aos demais jogadores. Ao receber essa mensagem, o programa deverá guardar o apelido e IP do jogador (conforme explicado na <b>MSG02</b>), e responderá com uma <b>MSG02</b> se identificando, permitindo que seja montada uma lista de jogadores que estão online. Essa lista deverá ser usada para convidar jogadores para a disputa de um jogo.
 </dd>
 
-•	Mensagem “02” (MSG02): resposta à MSG01 informando que você está online.
-Formato da Mensagem: 02999Apelido
-02: identificação da mensagem
-999: tamanho total da mensagem, incluindo o cabeçalho
-Apelido: identificação do jogador que está enviando a mensagem
-Essa mensagem é uma resposta automática à mensagem MSG01. Essa mensagem deverá ser enviada somente para quem enviou a mensagem MSG01, onde o jogador corrente estará se identificando, mostrando que está online. Ao receber as mensagens MSG02 (bem como a MSG01) o programa deverá atualizar a lista de jogadores que estão online. Essa lista conterá o apelido e IP de cada jogador (o IP pode ser obtido através do campo RemoteAddress existente no socket que estiver escutando a porta 20181), para que o jogador corrente possa fazer um convite a algum desses jogadores para participar de um jogo. Jogadores que estiverem na lista e não responderem à sua mensagem MSG01 deverão ser retirados da lista.
+<dt><h4>Mensagem “02” (MSG02): resposta à MSG01 informando que você está online.</h4></dt>
+<dd><b>Formato da Mensagem: 02999Apelido</b>
+<nl>
+  <li><b>02</b>: identificação da mensagem</li>
+  <li><b>999</b>: tamanho total da mensagem, incluindo o cabeçalho</li>
+  <li><b>Apelido</b>: identificação do jogador que está enviando a mensagem</li>
+</nl></dd>
+<dd>Essa mensagem é uma resposta automática à mensagem MSG01. Essa mensagem deverá ser enviada somente para quem enviou a mensagem MSG01, onde o jogador corrente estará se identificando, mostrando que está online. Ao receber as mensagens MSG02 (bem como a MSG01) o programa deverá atualizar a lista de jogadores que estão online. Essa lista conterá o apelido e IP de cada jogador (o IP pode ser obtido através do campo RemoteAddress existente no socket que estiver escutando a porta 20181), para que o jogador corrente possa fazer um convite a algum desses jogadores para participar de um jogo. Jogadores que estiverem na lista e não responderem à sua mensagem MSG01 deverão ser retirados da lista.
+</dd>
 
 •	Mensagem “03” (MSG03): programa foi encerrado.
 Formato da Mensagem: 03999Apelido
