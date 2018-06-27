@@ -25,6 +25,7 @@ import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -232,7 +233,8 @@ public class TabuleiroFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel2 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
@@ -298,8 +300,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
                 formWindowClosing(evt);
             }
         });
@@ -316,8 +320,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos1JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos1JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos1JLabel.setAlignmentY(0.0F);
-        pos1JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos1JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos1JLabelMouseClicked(evt);
             }
         });
@@ -341,8 +347,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos2JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos2JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos2JLabel.setAlignmentY(0.0F);
-        pos2JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos2JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos2JLabelMouseClicked(evt);
             }
         });
@@ -366,8 +374,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos3JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos3JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos3JLabel.setAlignmentY(0.0F);
-        pos3JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos3JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos3JLabelMouseClicked(evt);
             }
         });
@@ -393,8 +403,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos4JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos4JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos4JLabel.setAlignmentY(0.0F);
-        pos4JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos4JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos4JLabelMouseClicked(evt);
             }
         });
@@ -420,8 +432,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos5JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos5JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos5JLabel.setAlignmentY(0.0F);
-        pos5JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos5JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos5JLabelMouseClicked(evt);
             }
         });
@@ -447,8 +461,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos6JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos6JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos6JLabel.setAlignmentY(0.0F);
-        pos6JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos6JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos6JLabelMouseClicked(evt);
             }
         });
@@ -474,8 +490,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos7JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos7JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos7JLabel.setAlignmentY(0.0F);
-        pos7JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos7JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos7JLabelMouseClicked(evt);
             }
         });
@@ -501,8 +519,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos8JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos8JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos8JLabel.setAlignmentY(0.0F);
-        pos8JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos8JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos8JLabelMouseClicked(evt);
             }
         });
@@ -528,8 +548,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         pos9JLabel.setFont(new java.awt.Font("Calibri", 1, 54)); // NOI18N
         pos9JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pos9JLabel.setAlignmentY(0.0F);
-        pos9JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        pos9JLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 pos9JLabelMouseClicked(evt);
             }
         });
@@ -706,8 +728,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         jLabel1.setText("Jogadores Online");
 
         jogadoresJList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jogadoresJList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+        jogadoresJList.addListSelectionListener(new javax.swing.event.ListSelectionListener()
+        {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
+            {
                 jogadoresJListValueChanged(evt);
             }
         });
@@ -716,16 +740,20 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         convidarJButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         convidarJButton.setText("Convidar");
         convidarJButton.setEnabled(false);
-        convidarJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        convidarJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 convidarJButtonActionPerformed(evt);
             }
         });
 
         sairJButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         sairJButton.setText("Sair");
-        sairJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        sairJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 sairJButtonActionPerformed(evt);
             }
         });
@@ -768,8 +796,10 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         jLabel4.setText("Interface:");
 
         conectarJButton.setText("Conectar");
-        conectarJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        conectarJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 conectarJButtonActionPerformed(evt);
             }
         });
@@ -805,25 +835,32 @@ public class TabuleiroFrame extends javax.swing.JFrame {
 
         mensagensJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         mensagensJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Tipo", "Protocolo", "Endereço", "Porta", "Conteúdo"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 true, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -833,6 +870,13 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         mensagensJTable.setPreferredSize(null);
         mensagensJTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         mensagensJTable.getTableHeader().setReorderingAllowed(false);
+        mensagensJTable.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                mensagensJTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(mensagensJTable);
         mensagensJTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -1112,6 +1156,22 @@ public class TabuleiroFrame extends javax.swing.JFrame {
         quemEstaOnlineTimer.start();
 
     }//GEN-LAST:event_conectarJButtonActionPerformed
+
+    private void mensagensJTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_mensagensJTableMouseClicked
+    {//GEN-HEADEREND:event_mensagensJTableMouseClicked
+        if(SwingUtilities.isRightMouseButton(evt))
+        {
+            int resp = JOptionPane.showConfirmDialog(this, "Limpa mensagens?",
+                                "Mensagens Enviadas/Recebidas",
+                                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            // jogador local desistiu do convite
+            if (resp == JOptionPane.YES_OPTION)
+            {
+                ((DefaultTableModel) mensagensJTable.getModel()).setRowCount(0);
+            }
+        }
+    }//GEN-LAST:event_mensagensJTableMouseClicked
                 
     private void encerrarConviteParaJogar(boolean timeout)
     {
@@ -1546,12 +1606,12 @@ public class TabuleiroFrame extends javax.swing.JFrame {
             // mostra mensagem enviada
             if(mostrarMensagens)
                 mostraMensagem(MSG_OUT, MSG_PROTO_UDP, addr.getHostAddress(),
-                               udpSocket.getLocalPort(), msg);
+                               PORTA_UDP, msg);
         } catch (IOException ex) {
             if(mostrarMensagens)
                 mostraMensagem(MSG_OUT, MSG_PROTO_UDP,
                                addr.getHostAddress(),
-                               (udpSocket == null ? 0 : udpSocket.getPort()),
+                               (udpSocket == null ? 0 : PORTA_UDP),
                                "Erro: Envio da mensagem [msg " + numero + "]");
         }
     }
